@@ -50,9 +50,6 @@ public class TutorialCanvas : MonoBehaviour {
             return;
         }
 
-        print(this.tutorialTexts.Count);
-        print(this.currentState);
-
         this.textField.text = this.tutorialTexts[this.currentState];
         this.typewriterObject = Typewriter.AnimateWords(this.textField, Settings.animationDelayBetweenWords)
                                           .SetOnComplete(() => {
