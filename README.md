@@ -4,7 +4,7 @@
 
 # COMMAND & CONTROL
 
-**COMMAND & CONTROL** is a single-player puzzle-simulation game for the [Singapore Army Open House 2022](https://www.mindef.gov.sg/web/portal/mindef/news-and-events/latest-releases/article-detail/2022/May/06may22_fs). The game intends to educate players on the importance of cyber and password security.
+**COMMAND & CONTROL** is a single-player puzzle-simulation game for the [Singapore Army Open House 2022](https://www.mindef.gov.sg/web/portal/mindef/news-and-events/latest-releases/article-detail/2022/May/06may22_fs). The game intends to educate players on the importance of cyber and password security. Player scores are tracked in [C2-leaderboard](https://github.com/winstxnhdw/C2-leaderboard).
 
 ## Requirements
 
@@ -12,7 +12,6 @@
 - Unity 2020.3.29f1
 - Microsoft .NET 4.6 Framework
 - C# 8.0
-- Docker (Leaderboard only)
 
 ## Setup
 
@@ -33,24 +32,6 @@ To solve this issue, simply close Unity and VSCode, and remove the `Library` dir
 
 ```bash
 rm -r Library
-```
-
-## Leaderboard
-
-Due to the nature of the event, the leaderboard is hosted separately from the game.
-
-### Installation
-
-The installation script only supports Arch or Ubuntu. If you are on any other platform, you will have to install Docker manually [here](https://docs.docker.com/get-docker/).
-
-```bash
-sh Leaderboard/requirements.sh
-```
-
-### Development
-
-```bash
-sh Leaderboard/launch.sh
 ```
 
 ## Themes
