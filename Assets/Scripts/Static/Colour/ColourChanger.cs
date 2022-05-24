@@ -1,0 +1,19 @@
+using System.Globalization;
+using UnityEngine;
+
+public static class ColourChanger {
+    public static Color SetColourAlpha(in Color currentColour, float alpha) {
+        return new Color(currentColour.r, currentColour.g, currentColour.b, alpha);
+    }
+
+    public static Color HexToColor(in string hex) {
+        byte r = byte.Parse(hex.Substring(0, 2), NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), NumberStyles.HexNumber);
+        return new Color32(r, g, b, 255);
+    }
+
+    public static string SetErrorTextColour(in string text) {
+        return $"<color={Settings.errorTextHex}>{text}</color>";
+    }
+}
