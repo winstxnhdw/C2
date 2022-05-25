@@ -124,7 +124,6 @@ public class TutorialCanvas : MonoBehaviour {
     }
 
     void AnimateLogos() {
-        // this.textField.transform.LeanMoveLocalY(this.textField.transform.position.y + 0.2, 0.75f);
         this.textField.interactable = false;
         this.textField.gameObject.LeanMoveLocalY(this.textField.transform.position.y + 0.3f, 0.75f)
                                  .setEaseOutExpo();
