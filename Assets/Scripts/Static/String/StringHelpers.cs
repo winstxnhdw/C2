@@ -4,8 +4,8 @@ using System.Linq;
 using System.Collections.Generic;
 
 public static class StringHelpers {
-    static Dictionary<string, Func<string>> interpolationDictionary = new Dictionary<string, Func<string>>() {
-        {"{username}", Player.GetUsername}
+    static Dictionary<string, string> interpolationDictionary = new Dictionary<string, string>() {
+        {"{username}", Player.Username}
     };
 
     public static string GenerateString(int stringLength, in string characters) {
@@ -23,8 +23,8 @@ public static class StringHelpers {
     }
 
     public static string InterpolateFieldText(string fieldText) {
-        foreach (KeyValuePair<string, Func<string>> interpolationPair in interpolationDictionary) {
-            fieldText = fieldText.Replace(interpolationPair.Key, interpolationPair.Value());
+        foreach (KeyValuePair<string, string> interpolationPair in interpolationDictionary) {
+            fieldText = fieldText.Replace(interpolationPair.Key, interpolationPair.Value);
         }
 
         return fieldText;

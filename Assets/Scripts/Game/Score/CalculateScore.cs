@@ -46,7 +46,7 @@ public class CalculateScore : MonoBehaviour {
         int totalScore = this.CalculatePasswordScores();
         this.AnimateScore(totalScore);
         this.scoreBar.AnimateScoreBar(totalScore, 300, this.scoreAnimationDuration);
-        this.submitScore.Submit(Player.GetUsername(), totalScore);
+        this.submitScore.Submit(Player.Username, totalScore);
     }
 
     void RestartGameOnComplete() {
@@ -57,7 +57,7 @@ public class CalculateScore : MonoBehaviour {
     int CalculatePasswordScores() {
         int totalScore = 0;
 
-        foreach (int index in Enumerable.Range(0, Player.GetPasswordCount())) {
+        foreach (int index in Enumerable.Range(0, Player.PasswordCount)) {
             int score = this.CalculatePasswordScore(Player.GetPasswordAtIndex(index));
             totalScore += score;
         }

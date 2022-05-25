@@ -4,7 +4,7 @@ public class RecallPrompt : PromptField {
     public static event Action onComplete;
 
     protected override void OnEnable() {
-        int passwordIndex = UnityEngine.Random.Range(0, Player.GetPasswordCount());
+        int passwordIndex = UnityEngine.Random.Range(0, Player.PasswordCount);
         string passwordIndexFormat = Player.GetPasswordOrdinalIndicator(passwordIndex);
         this.promptField.text = StringHelpers.InterpolateFieldText(this.inputFieldText)
                                              .Replace("{passwordIndex}", Player.GetPasswordOrdinalIndicator(passwordIndex));

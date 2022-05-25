@@ -24,7 +24,7 @@ public class HackingVerification : MonoBehaviour {
     }
 
     void OnEnable() {
-        if (Player.IsPasswordBruteforceable()) {
+        if (Player.HasBeenBruteforced()) {
             this.PasswordHasBeenHacked();
         }
 
