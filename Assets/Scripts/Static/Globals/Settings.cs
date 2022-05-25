@@ -13,6 +13,7 @@ public class Settings {
     public static int MinPasswordLength => 8;
     public static float MinScrollZ => 0.0f;
     public static float MaxScrollZ => 7.0f;
+    public static int MaxRecallAttempts => 3;
 
 #if UNITY_EDITOR
     public static string DictionaryFileName => DictionaryFilePath("test");
