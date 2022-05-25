@@ -22,7 +22,9 @@ public class Settings {
     public static float LogAnimationDelay => 0.0f;
     public static float HackerDetectedDelay => 1.0f;
     public static Dictionary<int, string> PasswordOrdinalIndicators => new Dictionary<int, string>() {
-        {0, "1<sup>st</sup>"},
+          {0, "1<sup>st</sup>"},
+        {1, "2<sup>nd</sup>"},
+        {2, "3<sup>rd</sup>"}
     };
 
 #else
