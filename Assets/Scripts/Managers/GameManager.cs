@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
         UsernameReply.onComplete += this.NextCanvas;
         PasswordReply.onComplete += this.EnablePasswordVerificationCanvas;
         PasswordVerification.onComplete += this.AfterPasswordVerification;
-        RecallReply.onComplete += this.NextCanvas;
+        RecallInstructions.onComplete += this.NextCanvas;
         RecallVerification.onComplete += this.NextCanvas;
         DetectedPrompt.onComplete += this.NextCanvas;
         HackingField.onComplete += this.NextCanvas;
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour {
         UsernameReply.onComplete -= this.NextCanvas;
         PasswordReply.onComplete -= this.EnablePasswordVerificationCanvas;
         PasswordVerification.onComplete -= this.AfterPasswordVerification;
-        RecallReply.onComplete -= this.NextCanvas;
+        RecallInstructions.onComplete -= this.NextCanvas;
         RecallVerification.onComplete -= this.NextCanvas;
         DetectedPrompt.onComplete -= this.NextCanvas;
         HackingField.onComplete -= this.NextCanvas;

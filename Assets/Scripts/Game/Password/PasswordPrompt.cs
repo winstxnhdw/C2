@@ -4,8 +4,7 @@ public class PasswordPrompt : PromptField {
     public static event Action onComplete;
 
     protected override void OnEnable() {
-        this.promptField.text = StringHelpers.InterpolateFieldText(this.inputFieldText)
-                                             .Replace("{passwordIndex}", Player.CurrentPasswordOrdinalIndicator);
+        this.promptField.text = StringHelpers.InterpolateFieldText(this.inputFieldText);
         base.OnEnable();
     }
 

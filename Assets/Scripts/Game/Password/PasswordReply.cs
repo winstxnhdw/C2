@@ -3,6 +3,9 @@ using UnityEngine;
 using TMPro;
 
 public class PasswordReply : MonoBehaviour {
+    [SerializeField] TextMeshProUGUI instructionsTextMesh;
+    [TextArea][SerializeField] string instructionsText;
+
     public static event Action onComplete;
     public static event Action<bool> setContinueHUD;
 
@@ -12,6 +15,7 @@ public class PasswordReply : MonoBehaviour {
         this.inputField = GetComponent<TMP_InputField>();
         this.inputField.onSubmit.AddListener(OnSubmit);
         this.inputField.onValueChanged.AddListener(OnValueChanged);
+        this.instructionsTextMesh.text = this.instructionsText.Replace("{passwordCharacters}", this.inputField.characterLimit.ToString());
 
         PasswordPrompt.onComplete += this.inputField.ActivateInputField;
     }
@@ -21,6 +25,8 @@ public class PasswordReply : MonoBehaviour {
     }
 
     void OnValueChanged(string text) {
+        string remainingCharacters = (this.inputField.characterLimit - text.Length).ToString();
+        this.instructionsTextMesh.text = this.instructionsText.Replace("{passwordCharacters}", remainingCharacters);
         PasswordReply.setContinueHUD?.Invoke(!string.IsNullOrWhiteSpace(text));
     }
 

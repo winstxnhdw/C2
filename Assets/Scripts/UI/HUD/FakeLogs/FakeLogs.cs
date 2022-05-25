@@ -13,6 +13,7 @@ public class FakeLogs : MonoBehaviour {
     void Awake() {
         UIManager.onError += this.SetColoursToError;
         GameManager.initialiseLogs += this.InitialiseLogs;
+        RecallInstructions.onIncorrectRecall += this.IncorrectRecallLogs;
         RecallVerification.onCorrect += this.SuccessLogs;
         PasswordVerification.beginVerification += this.SendVerificationLogs;
 
@@ -45,6 +46,10 @@ public class FakeLogs : MonoBehaviour {
             this.fakeLogsText.text += $"\n{log}success";
             yield return new WaitForSeconds(Settings.LogAnimationDelay);
         }
+    }
+
+    void IncorrectRecallLogs() {
+        this.fakeLogsText.text += ColourChanger.SetErrorTextColour("\nIncorrect password!");
     }
 
     void SendVerificationLogs(in Dictionary<string, bool> passwordRequirements) {

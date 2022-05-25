@@ -2298,6 +2298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e0429644c9a024b8418d8c65279753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instructionsTextMesh: {fileID: 1229658432}
+  instructionsText: Register three unique passwords. {passwordCharacters} characters
+    remaining.
 --- !u!114 &789048180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2356,7 +2359,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 20
-  m_CharacterLimit: 20
+  m_CharacterLimit: 30
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -2560,6 +2563,7 @@ GameObject:
   - component: {fileID: 804729910}
   - component: {fileID: 804729912}
   - component: {fileID: 804729911}
+  - component: {fileID: 804729913}
   m_Layer: 5
   m_Name: Instructions
   m_TagString: Untagged
@@ -2606,7 +2610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Your password has been chosen. Please re-enter to login.
+  m_text: Please re-enter to login. You have {recallAttempts} attempts remaining.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad85844b513f06942b9910bea83bac6c, type: 2}
   m_sharedMaterial: {fileID: 4852374918205386543, guid: ad85844b513f06942b9910bea83bac6c, type: 2}
@@ -2683,6 +2687,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804729909}
   m_CullTransparentMesh: 1
+--- !u!114 &804729913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804729909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede594ecd3ea393419afd98ea47c74b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionsText: Please re-enter to login. You have {recallAttempts} attempts
+    remaining.
 --- !u!1 &844259782
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,7 +4407,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 176.42, y: -204.69998}
-  m_SizeDelta: {x: 300, y: 50.000015}
+  m_SizeDelta: {x: 400, y: 50.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1229658432
 MonoBehaviour:
@@ -4411,7 +4429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Register three strong and unique passwords
+  m_text: Register three unique passwords. {passwordCharacters} characters remaining.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad85844b513f06942b9910bea83bac6c, type: 2}
   m_sharedMaterial: {fileID: 4852374918205386543, guid: ad85844b513f06942b9910bea83bac6c, type: 2}
@@ -5836,8 +5854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e6201982259b40bd6ab36d35d0559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputFieldText: Commander {username}, please input your {passwordIndex} password
-    choice.
+  inputFieldText: Commander {username}, please input your {currentPasswordIndex}
+    password choice.
 --- !u!114 &1557957274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5924,7 +5942,8 @@ MonoBehaviour:
   m_CaretColor: {r: 0.2, g: 0.627451, b: 0.38431373, a: 1}
   m_CustomCaretColor: 1
   m_SelectionColor: {r: 0.011764706, g: 0.627451, b: 0.38431373, a: 0}
-  m_Text: Commander {username}, please input your {passwordIndex} password choice.
+  m_Text: Commander {username}, please input your {currentPasswordIndex} password
+    choice.
   m_CaretBlinkRate: 2
   m_CaretWidth: 5
   m_ReadOnly: 0
@@ -7612,7 +7631,8 @@ MonoBehaviour:
   m_CaretColor: {r: 0.2, g: 0.627451, b: 0.38431373, a: 1}
   m_CustomCaretColor: 1
   m_SelectionColor: {r: 0.011764706, g: 0.627451, b: 0.38431373, a: 0}
-  m_Text: Commander {username}, please re-enter your {passwordIndex} password choice.
+  m_Text: Commander {username}, please re-enter your {randomPasswordIndex} password
+    choice.
   m_CaretBlinkRate: 2
   m_CaretWidth: 5
   m_ReadOnly: 0
@@ -7644,8 +7664,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6a7450a90b6c14c8eb2d93cf9487fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputFieldText: Commander {username}, please re-enter your {passwordIndex} password
-    choice.
+  inputFieldText: Commander {username}, please re-enter your {randomPasswordIndex}
+    password choice.
 --- !u!1 &1817314840
 GameObject:
   m_ObjectHideFlags: 0
