@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 public static class StringHelpers {
     static Dictionary<string, string> interpolationDictionary = new Dictionary<string, string>() {
-        {"{username}", Player.Username}
+        {"{username}", Player.Username},
+        {"{currentPasswordIndex}", Player.CurrentPasswordOrdinalIndicator},
+        {"{randomPasswordIndex}", Player.GetRecalledPasswordOrdinal},
     };
 
     public static string GenerateString(int stringLength, in string characters) {
