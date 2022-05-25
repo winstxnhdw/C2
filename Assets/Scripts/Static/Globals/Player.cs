@@ -15,6 +15,8 @@ public static class Player {
 
     public static int ChosenPasswordLength => Player.GetPasswordAtIndex(Player.chosenPasswordIndex).Length;
 
+    public static string GetRecalledPasswordOrdinal => Player.GetPasswordOrdinalIndicator(Player.chosenPasswordIndex);
+
     public static IEnumerable<string> Passwords => Player.passwords;
 
     public static void AddPassword(string password) => Player.passwords.Add(password);

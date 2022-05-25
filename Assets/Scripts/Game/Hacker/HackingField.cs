@@ -18,7 +18,7 @@ public class HackingField : MonoBehaviour {
     }
 
     void Update() {
-        if (this.minPasswordLength == Player.ChosenPasswordLength) HackingField.onComplete?.Invoke();
+        if (this.minPasswordLength >= Player.ChosenPasswordLength) HackingField.onComplete?.Invoke();
         if (this.timer >= this.animationDurationPerCharacter) {
             this.minPasswordLength++;
             this.timer = 0.0f;
