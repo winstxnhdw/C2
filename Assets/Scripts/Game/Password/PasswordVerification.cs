@@ -51,7 +51,7 @@ public class PasswordVerification : MonoBehaviour {
 
     Dictionary<string, bool> VerifyPassword() {
         // We assume that the most recent password is the string to verify
-        IEnumerable<string> passwords = Player.GetPasswords();
+        IEnumerable<string> passwords = Player.Passwords;
         string password = passwords.Last();
 
         bool isPasswordLengthValid = password.Length >= Settings.minPasswordLength;

@@ -24,7 +24,7 @@ public class UsernameReply : MonoBehaviour {
         if (this.inputField.wasCanceled) return;
         if (string.IsNullOrWhiteSpace(username)) return;
 
-        Player.CreateUsername(username.Trim());
+        Player.Username = username.Trim();
         UsernameReply.setContinueHUD?.Invoke(false);
         UsernameReply.onComplete?.Invoke();
     }

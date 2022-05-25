@@ -52,7 +52,7 @@ public class FakeLogs : MonoBehaviour {
     }
 
     IEnumerator ISendVerificationLogs(Dictionary<string, bool> passwordRequirements) {
-        this.fakeLogsText.text += $"\nVerifying the {Player.GetPasswordOrdinalIndicator(Player.GetPasswordCount() - 1)} password....";
+        this.fakeLogsText.text += $"\nVerifying the {Player.GetPasswordOrdinalIndicator(Player.PasswordCount - 1)} password....";
 
         foreach (KeyValuePair<string, bool> requirement in passwordRequirements) {
             yield return new WaitForSeconds(Settings.logAnimationDelay);
