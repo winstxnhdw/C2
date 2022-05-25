@@ -34,14 +34,14 @@ public class HackingVerification : MonoBehaviour {
     }
 
     Typewriter AnimateWords() {
-        return Typewriter.AnimateWords(this.verifyField, Settings.animationDelayBetweenWords);
+        return Typewriter.AnimateWords(this.verifyField, Settings.AnimationDelayBetweenWords);
     }
 
     void PasswordHasBeenHacked() {
         HackingVerification.onHacked?.Invoke();
         this.instructionsTextMesh.text = ColourChanger.SetErrorTextColour("SYSTEM COMPROMISED. GAME OVER!");
-        this.verifyField.caretColor = Settings.errorTextColour;
-        this.verifyField.GetComponentInChildren<TextMeshProUGUI>().color = Settings.errorTextColour;
+        this.verifyField.caretColor = Settings.ErrorTextColour;
+        this.verifyField.GetComponentInChildren<TextMeshProUGUI>().color = Settings.ErrorTextColour;
         this.verifyField.text = "The hacker has infiltrated our systems as your password was weak and predictable.";
         this.AnimateWords()
             .SetOnComplete(() => {

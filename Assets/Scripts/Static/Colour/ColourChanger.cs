@@ -14,6 +14,6 @@ public static class ColourChanger {
     }
 
     public static string SetErrorTextColour(in string text) {
-        return $"<color={Settings.errorTextHex}>{text}</color>";
+        return $"<color={Settings.ErrorTextHex}>{text}</color>";
     }
 }

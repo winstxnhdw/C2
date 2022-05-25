@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void AfterPasswordVerification() {
-        if (Player.PasswordCount == Settings.passwordOrdinalIndicators.Count) this.gameState++;
+        if (Player.PasswordCount == Settings.PasswordOrdinalIndicators.Count) this.gameState++;
         this.SetActiveCanvases();
     }
 

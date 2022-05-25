@@ -32,7 +32,7 @@ public class FakeLogs : MonoBehaviour {
     IEnumerator IInitaliseLogs() {
         foreach (string log in systemsLogTemplate) {
             this.fakeLogsText.text += $"\n{log}initialising";
-            yield return new WaitForSeconds(Settings.logAnimationDelay);
+            yield return new WaitForSeconds(Settings.LogAnimationDelay);
         }
     }
 
@@ -43,7 +43,7 @@ public class FakeLogs : MonoBehaviour {
     IEnumerator ISuccessLogs() {
         foreach (string log in systemsLogTemplate) {
             this.fakeLogsText.text += $"\n{log}success";
-            yield return new WaitForSeconds(Settings.logAnimationDelay);
+            yield return new WaitForSeconds(Settings.LogAnimationDelay);
         }
     }
 
@@ -55,7 +55,7 @@ public class FakeLogs : MonoBehaviour {
         this.fakeLogsText.text += $"\nVerifying the {Player.GetPasswordOrdinalIndicator(Player.PasswordCount - 1)} password....";
 
         foreach (KeyValuePair<string, bool> requirement in passwordRequirements) {
-            yield return new WaitForSeconds(Settings.logAnimationDelay);
+            yield return new WaitForSeconds(Settings.LogAnimationDelay);
             this.fakeLogsText.text += $"\n{requirement.Key}.... {requirement.Value}";
         }
 

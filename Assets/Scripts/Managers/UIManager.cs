@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour {
     }
 
     void SetColoursToError() {
-        UIManager.onError?.Invoke(Settings.errorTextColour);
+        UIManager.onError?.Invoke(Settings.ErrorTextColour);
     }
 
     void SetContinue(bool active) {

@@ -12,7 +12,7 @@ public class PromptField : MonoBehaviour {
 
     protected virtual void OnEnable() {
         this.promptField.interactable = true;
-        Typewriter.AnimateWords(this.promptField, Settings.animationDelayBetweenWords)
+        Typewriter.AnimateWords(this.promptField, Settings.AnimationDelayBetweenWords)
                   .SetOnComplete(() => this.InvokeOnComplete());
     }
 
