@@ -11,6 +11,6 @@ public class StartMenuField : MonoBehaviour {
 
     void OnEnable() {
         inputField.text = this.inputFieldText;
-        Typewriter.AnimateLetters(inputField, Settings.animationDelayBetweenLetters);
+        Typewriter.AnimateLetters(inputField, Settings.AnimationDelayBetweenLetters);
     }
 }

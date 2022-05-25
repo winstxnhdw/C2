@@ -13,7 +13,7 @@ public class ScrollText : MonoBehaviour {
 
     void Awake() {
         this.flashingSprite = GetComponent<SpriteRenderer>();
-        this.flashingSprite.color = Settings.defaultTextColour;
+        this.flashingSprite.color = Settings.DefaultTextColour;
         CameraMovementListener.onCameraMove += this.UpdateSpriteAngle;
     }
 

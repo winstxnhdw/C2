@@ -20,7 +20,7 @@ public class RecallVerification : MonoBehaviour {
             this.OnIncorrectRecall();
         }
 
-        Typewriter.AnimateWords(this.verifyField, Settings.animationDelayBetweenWords);
+        Typewriter.AnimateWords(this.verifyField, Settings.AnimationDelayBetweenWords);
     }
 
     void OnCorrectRecall() {
@@ -32,7 +32,7 @@ public class RecallVerification : MonoBehaviour {
     }
 
     void OnIncorrectRecall() {
-        this.verifyField.caretColor = Settings.errorTextColour;
+        this.verifyField.caretColor = Settings.ErrorTextColour;
         this.verifyField.text = ColourChanger.SetErrorTextColour("The system is now inaccessible and a full system reset is underway.</color>");
         this.instructionsTextMesh.text = ColourChanger.SetErrorTextColour("PASSWORD INCORRECT. YOU HAVE BEEN LOCKED OUT.");
 

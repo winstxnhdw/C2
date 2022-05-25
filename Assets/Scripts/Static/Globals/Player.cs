@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 public static class Player {
-    static List<string> passwords = new List<string>(Settings.passwordOrdinalIndicators.Count());
+    static List<string> passwords = new List<string>(Settings.PasswordOrdinalIndicators.Count());
     static string recalledPasswordAttempt;
     static int chosenPasswordIndex;
 
@@ -21,7 +21,7 @@ public static class Player {
 
     public static string GetPasswordAtIndex(int index) => Player.passwords[index];
 
-    public static string GetPasswordOrdinalIndicator(int index) => Settings.passwordOrdinalIndicators[index];
+    public static string GetPasswordOrdinalIndicator(int index) => Settings.PasswordOrdinalIndicators[index];
 
     public static void RemoveLastPassword() => Player.passwords.RemoveAt(Player.PasswordCount - 1);
 

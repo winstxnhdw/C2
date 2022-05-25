@@ -54,7 +54,7 @@ public class PasswordVerification : MonoBehaviour {
         IEnumerable<string> passwords = Player.Passwords;
         string password = passwords.Last();
 
-        bool isPasswordLengthValid = password.Length >= Settings.minPasswordLength;
+        bool isPasswordLengthValid = password.Length >= Settings.MinPasswordLength;
         bool isPasswordSymbolic = password.Length - password.Count(char.IsLetterOrDigit) > 0;
         bool isPasswordCaseValid = password.Any(char.IsUpper) && password.Any(char.IsLower);
         bool isPasswordAlphanumeric = password.Any(char.IsLetter) && password.Any(char.IsNumber);

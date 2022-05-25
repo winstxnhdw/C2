@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour {
     public void MoveZ(float value) {
         if (value == 0.0f || !this.isEnabled) return;
 
-        float newPositionZ = math.clamp(transform.position.z + (math.sign(value) * this.zDeltaScroll), Settings.zMinScrollStartMenu, Settings.zMaxScrollStartMenu);
+        float newPositionZ = math.clamp(transform.position.z + (math.sign(value) * this.zDeltaScroll), Settings.MinScrollZ, Settings.MaxScrollZ);
         LeanTween.cancel(gameObject);
         transform.LeanMoveLocalZ(newPositionZ, this.tweenDuration)
                  .setEaseOutExpo();

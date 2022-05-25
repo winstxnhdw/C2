@@ -41,7 +41,7 @@ public class CalculateScore : MonoBehaviour {
     }
 
     void OnEnable() {
-        if (Player.HasBeenBruteforced()) this.OnError(Settings.errorTextColour);
+        if (Player.HasBeenBruteforced()) this.OnError(Settings.ErrorTextColour);
 
         int totalScore = this.CalculatePasswordScores();
         this.AnimateScore(totalScore);

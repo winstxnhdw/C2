@@ -19,7 +19,7 @@ public class ScoreBar : MonoBehaviour {
     }
 
     void OnEnable() {
-        if (Player.HasBeenBruteforced()) this.OnError(Settings.errorTextColour);
+        if (Player.HasBeenBruteforced()) this.OnError(Settings.ErrorTextColour);
     }
 
     public void AnimateScoreBar(int totalScore, int maxScore, float animationDuration) {

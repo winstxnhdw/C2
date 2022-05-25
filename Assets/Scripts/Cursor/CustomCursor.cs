@@ -15,8 +15,8 @@ public class CustomCursor : MonoBehaviour {
         CameraMovementListener.onCameraMove += this.UpdateVirtualCursorPosition;
         CursorMovement.onVirtualCursorMove += this.UpdateVirtualCursorPosition;
 
-        Cursor.visible = Settings.cursorVisible;
-        Cursor.lockState = Settings.cursorConfined ? CursorLockMode.Confined : CursorLockMode.None;
+        Cursor.visible = Settings.CursorVisible;
+        Cursor.lockState = Settings.CursorConfined ? CursorLockMode.Confined : CursorLockMode.None;
 
         this.cursorMovement = GetComponent<CursorMovement>();
         this.currentMousePosition = Mouse.current.position;
