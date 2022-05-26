@@ -1,21 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LoadAPI : MonoBehaviour {
-    static string API;
-    static string URI;
+    static string URI => Resources.Load<TextAsset>("API/uri").text;
 
-    void Awake() {
-        LoadAPI.URI = Resources.Load<TextAsset>("API/uri").text;
-        LoadAPI.API = $"{Resources.Load<TextAsset>("API/url").text}/{LoadAPI.URI}";
-    }
+    public static Dictionary<string, string> ServerURLs => new Dictionary<string, string> {
+        { "online", Resources.Load<TextAsset>("API/url").text },
+        { "local",  Resources.Load<TextAsset>("API/url_local").text }
+    };
 
-    public static string GetAPI {
-        get {
-            return LoadAPI.API;
-        }
-    }
-
-    public static void SetAPI(string url) {
-        LoadAPI.API = $"{url}/{LoadAPI.URI}";
-    }
+    public static string GetAPI(string URL) => $"{URL}/{URI}";
 }
