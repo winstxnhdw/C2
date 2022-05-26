@@ -11,15 +11,21 @@ public static class Player {
 
     public static string CurrentPasswordOrdinalIndicator => Player.GetPasswordOrdinalIndicator(Player.PasswordCount);
 
+    public static string GetRecalledPasswordOrdinal => Player.GetPasswordOrdinalIndicator(Player.chosenPasswordIndex);
+
     public static int PasswordCount => Player.passwords.Count;
 
     public static int ChosenPasswordLength => Player.GetPasswordAtIndex(Player.chosenPasswordIndex).Length;
 
-    public static string GetRecalledPasswordOrdinal => Player.GetPasswordOrdinalIndicator(Player.chosenPasswordIndex);
-
     public static IEnumerable<string> Passwords => Player.passwords;
 
     public static void AddPassword(string password) => Player.passwords.Add(password);
+
+    public static void RemoveLastPassword() => Player.passwords.RemoveAt(Player.PasswordCount - 1);
+
+    public static void SetChosenPasswordIndex(int index) => Player.chosenPasswordIndex = index;
+
+    public static void SetRecalledPasswordAttempt(string attempt) => Player.recalledPasswordAttempt = attempt;
 
     public static string GetPasswordAtIndex(int index) => Player.passwords[index];
 
@@ -30,12 +36,6 @@ public static class Player {
 
         return ordinalIndicator;
     }
-
-    public static void RemoveLastPassword() => Player.passwords.RemoveAt(Player.PasswordCount - 1);
-
-    public static void SetChosenPasswordIndex(int index) => Player.chosenPasswordIndex = index;
-
-    public static void SetRecalledPasswordAttempt(string attempt) => Player.recalledPasswordAttempt = attempt;
 
     public static bool IsRecalledPasswordCorrect() {
         if (string.IsNullOrEmpty(Player.recalledPasswordAttempt)) throw new Exception("No password attempt has been set.");
