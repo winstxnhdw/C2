@@ -11,7 +11,6 @@ public class CustomCamera : MonoBehaviour {
 
     void Awake() {
         CursorMovement.onVirtualCursorMove += this.UpdateCameraRotation;
-        Global.MainCamera.backgroundColor = Settings.CameraBackground;
 
         this.currentMouseScroll = Mouse.current.scroll;
         this.cameraMovement = GetComponent<CameraMovement>();
