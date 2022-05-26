@@ -4,6 +4,11 @@ using System.Linq;
 using System.Collections.Generic;
 
 public static class StringHelpers {
+    static Dictionary<string, Func<string>> interpolationDictionary = new Dictionary<string, Func<string>>() {
+            {"{username}",              () => Player.Username},
+            {"{currentPasswordIndex}",  () => Player.CurrentPasswordOrdinalIndicator},
+            {"{randomPasswordIndex}",   () => Player.GetRecalledPasswordOrdinal},
+    };
 
     public static string GenerateString(int stringLength, in string characters) {
         StringBuilder generatedCharacters = new StringBuilder();
@@ -20,14 +25,9 @@ public static class StringHelpers {
     }
 
     public static string InterpolateFieldText(string fieldText) {
-        Dictionary<string, string> interpolationDictionary = new Dictionary<string, string>() {
-            {"{username}", Player.Username},
-            {"{currentPasswordIndex}", Player.CurrentPasswordOrdinalIndicator},
-            {"{randomPasswordIndex}", Player.GetRecalledPasswordOrdinal},
-        };
-
-        foreach (KeyValuePair<string, string> interpolationPair in interpolationDictionary) {
-            fieldText = fieldText.Replace(interpolationPair.Key, interpolationPair.Value);
+        foreach (KeyValuePair<string, Func<string>> interpolationPair in StringHelpers.interpolationDictionary) {
+            if (!fieldText.Contains(interpolationPair.Key)) continue;
+            fieldText = fieldText.Replace(interpolationPair.Key, interpolationPair.Value());
         }
 
         return fieldText;

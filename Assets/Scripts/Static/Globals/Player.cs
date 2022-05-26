@@ -23,7 +23,13 @@ public static class Player {
 
     public static string GetPasswordAtIndex(int index) => Player.passwords[index];
 
-    public static string GetPasswordOrdinalIndicator(int index) => Settings.PasswordOrdinalIndicators[index];
+    public static string GetPasswordOrdinalIndicator(int index) {
+        if (!Settings.PasswordOrdinalIndicators.TryGetValue(index, out string ordinalIndicator)) {
+            throw new Exception($"No ordinal indicator found at index {index}.");
+        }
+
+        return ordinalIndicator;
+    }
 
     public static void RemoveLastPassword() => Player.passwords.RemoveAt(Player.PasswordCount - 1);
 
