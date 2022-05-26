@@ -109,7 +109,6 @@ public class TutorialCanvas : MonoBehaviour {
                 this.SymbolsContainer.LeanMoveLocalY(this.SymbolsContainer.transform.position.y + 0.15f, 0.75f).setEaseOutExpo();
                 break;
 
-
             case TutorialStates.Memory:
                 this.MemoryContainer.SetActive(true);
                 this.textField.text = "You must be able to remember your password.";
