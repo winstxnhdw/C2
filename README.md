@@ -39,3 +39,11 @@ rm -r Library
 <div align="center">
     <img src="resources/preview.gif" />
 </div>
+
+## Credits
+
+Many thanks to the following civilians for their contributions:
+
+[Alyssa](https://github.com/alyssaxchua) - Algorithm & design
+
+[Ting Ying](https://github.com/LTYGUY) - Debug & testing
