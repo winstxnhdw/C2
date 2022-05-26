@@ -4,29 +4,35 @@ using UnityEngine.InputSystem;
 using TMPro;
 
 public class TutorialCanvas : MonoBehaviour {
+    [Header("Text Field")]
     [SerializeField] TMP_InputField textField;
-    [SerializeField] TMP_InputField completeField;
+    [SerializeField] float fieldTweenOffsetY;
+    [SerializeField] float fieldTweenDuration;
+
+    [Header("Logo Containers")]
     [SerializeField] GameObject AlphanumericContainer;
     [SerializeField] GameObject CasingContainer;
     [SerializeField] GameObject MemoryContainer;
     [SerializeField] GameObject SymbolsContainer;
     [SerializeField] GameObject LengthContainer;
+    [SerializeField] float logoTweenOffsetY;
+    [SerializeField] float logoTweenDuration;
 
     List<string> tutorialTexts;
     List<GameObject> GameObjects;
     Typewriter typewriterObject;
-    Keyboard currentKeyboard;
-    int currentState;
-    TutorialStates animatingIndex;
-    bool animatingState;
     Sleep sleepObject;
+    Keyboard currentKeyboard;
+    TutorialStates animatingIndex;
+    int currentState;
+    bool animatingState;
     bool complete;
 
     enum TutorialStates {
         Alphanumeric,
         Casing,
-        Length,
         Symbols,
+        Length,
         Memory
     }
 
@@ -82,70 +88,71 @@ public class TutorialCanvas : MonoBehaviour {
     void AnimateLogos() {
         switch (this.animatingIndex) {
             case TutorialStates.Alphanumeric:
-                this.AlphanumericContainer.SetActive(true);
                 this.textField.text = "Your password must be alphanumeric.";
-                Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords);
-                this.AlphanumericContainer.LeanMoveLocalY(this.AlphanumericContainer.transform.position.y + 0.15f, 0.75f).setEaseOutExpo();
+                this.TweenLogo(this.AlphanumericContainer);
                 break;
 
             case TutorialStates.Casing:
-                this.CasingContainer.SetActive(true);
                 this.textField.text = "Your password must have upper and lower casings.";
-                Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords);
-                this.CasingContainer.LeanMoveLocalY(this.CasingContainer.transform.position.y + 0.15f, 0.75f).setEaseOutExpo();
-                break;
-
-            case TutorialStates.Length:
-                this.LengthContainer.SetActive(true);
-                this.textField.text = "Your password should be at least 8 characters long.";
-                Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords);
-                this.LengthContainer.LeanMoveLocalY(this.LengthContainer.transform.position.y + 0.15f, 0.75f).setEaseOutExpo();
+                this.TweenLogo(this.CasingContainer);
                 break;
 
             case TutorialStates.Symbols:
-                this.SymbolsContainer.SetActive(true);
                 this.textField.text = "Your password must contain symbols.";
-                Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords);
-                this.SymbolsContainer.LeanMoveLocalY(this.SymbolsContainer.transform.position.y + 0.15f, 0.75f).setEaseOutExpo();
+                this.TweenLogo(this.SymbolsContainer);
+                break;
+
+            case TutorialStates.Length:
+                this.textField.text = "Your password should be at least 8 characters long.";
+                this.TweenLogo(this.LengthContainer);
                 break;
 
             case TutorialStates.Memory:
-                this.MemoryContainer.SetActive(true);
                 this.textField.text = "You must be able to remember your password.";
-                Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords);
-                this.MemoryContainer.LeanMoveLocalY(this.MemoryContainer.transform.position.y + 0.15f, 0.75f).setEaseOutExpo();
+                this.TweenLogo(this.MemoryContainer);
                 break;
 
             default:
-                this.textField.gameObject.SetActive(false);
-                this.completeField.gameObject.SetActive(true);
                 this.GameObjects.ForEach(x => x.SetActive(false));
-                Typewriter.AnimateWords(this.completeField, Settings.AnimationDelayBetweenWords).SetOnComplete(() => this.complete = true);
+                this.textField.text = "Ready? Press ENTER to begin!";
+                this.textField.interactable = false;
+                this.complete = true;
+                this.TweenField(-1.0f);
                 break;
         }
 
         this.animatingIndex++;
     }
 
-    void AnimateLogoText() {
-        this.textField.interactable = false;
-        this.textField.gameObject.LeanMoveLocalY(this.textField.transform.position.y + 0.3f, 0.75f)
+    void TweenLogo(GameObject logo) {
+        this.typewriterObject = this.AnimateWords();
+        logo.SetActive(true);
+        logo.LeanMoveLocalY(logo.transform.position.y + this.logoTweenOffsetY, this.logoTweenDuration).setEaseOutExpo();
+    }
+
+    void TweenField(float unitVector) {
+        this.textField.gameObject.LeanMoveLocalY(this.textField.transform.position.y + (unitVector * this.fieldTweenOffsetY), this.fieldTweenDuration)
                                  .setEaseOutExpo();
-        this.AnimateLogos();
+    }
+
+    Typewriter AnimateWords() {
+        this.typewriterObject = Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords);
+        return this.typewriterObject;
     }
 
     void DisplayTexts() {
         if (this.currentState >= this.tutorialTexts.Count) {
             this.animatingState = true;
-            this.AnimateLogoText();
+            this.textField.interactable = false;
+            this.TweenField(1.0f);
+            this.AnimateLogos();
             return;
         }
 
         this.textField.text = this.tutorialTexts[this.currentState];
-        this.typewriterObject = Typewriter.AnimateWords(this.textField, Settings.AnimationDelayBetweenWords)
-                                          .SetOnComplete(() => {
-                                              this.sleepObject = Sleep.BeforeFunction(this.DisplayTexts, 4.0f);
-                                              this.currentState++;
-                                          });
+        this.AnimateWords().SetOnComplete(() => {
+            this.sleepObject = Sleep.BeforeFunction(this.DisplayTexts, 4.0f);
+            this.currentState++;
+        });
     }
 }
