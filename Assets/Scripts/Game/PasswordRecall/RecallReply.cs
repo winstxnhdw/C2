@@ -23,6 +23,7 @@ public class RecallReply : MonoBehaviour {
         if (this.inputField.wasCanceled) return;
         if (string.IsNullOrWhiteSpace(recallAttempt)) return;
 
+        this.inputField.ActivateInputField();
         Player.SetRecalledPasswordAttempt(recallAttempt);
         RecallReply.setContinueHUD?.Invoke(false);
         RecallReply.onComplete?.Invoke();
