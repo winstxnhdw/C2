@@ -4,7 +4,7 @@
 
 # COMMAND & CONTROL
 
-**COMMAND & CONTROL** is a single-player puzzle-simulation game for the [Singapore Army Open House 2022](https://www.mindef.gov.sg/web/portal/mindef/news-and-events/latest-releases/article-detail/2022/May/06may22_fs). The game intends to educate players on the importance of cyber and password security. Player scores are tracked in [C2-leaderboard](https://github.com/winstxnhdw/C2-leaderboard).
+**COMMAND & CONTROL** is a single-player puzzle-simulation game for the [Singapore Army Open House 2022](https://www.mindef.gov.sg/web/portal/mindef/news-and-events/latest-releases/article-detail/2022/May/06may22_fs). See it featured [here](https://www.facebook.com/plugins/video.php?height=250&href=https%3A%2F%2Fwww.facebook.com%2Foursingaporearmy%2Fvideos%2F1428028877712911%2F&show_text=false&t=150)! The game intends to educate players on the importance of cyber and password security. Player scores are tracked in [C2-leaderboard](https://github.com/winstxnhdw/C2-leaderboard).
 
 ## Requirements
 
