@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 34718842}
   - component: {fileID: 34718841}
   m_Layer: 5
-  m_Name: PromptField
+  m_Name: OnCompleteField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.2, g: 0.627451, b: 0.38431373, a: 1}
   m_CustomCaretColor: 1
   m_SelectionColor: {r: 0.011764706, g: 0.627451, b: 0.38431373, a: 0}
-  m_Text: Ready? Press enter to begin!
+  m_Text: Ready? Press ENTER to begin!
   m_CaretBlinkRate: 2
   m_CaretWidth: 5
   m_ReadOnly: 0

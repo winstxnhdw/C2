@@ -8,8 +8,5 @@ public class RuntimeSettings : MonoBehaviour {
         // Cursor
         Cursor.visible = Settings.CursorVisible;
         Cursor.lockState = Settings.CursorConfined ? CursorLockMode.Confined : CursorLockMode.None;
-
-        // Camera
-        Global.MainCamera.backgroundColor = Settings.CameraBackground;
     }
 }
