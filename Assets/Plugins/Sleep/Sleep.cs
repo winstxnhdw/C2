@@ -28,7 +28,7 @@ public class Sleep : MonoBehaviour {
 
     void CompleteTask() {
         if (this.setOnCompleteFunction != null) this.setOnCompleteFunction();
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     public Sleep SetOnComplete(in Action setOnCompleteFunction) {
