@@ -10,9 +10,9 @@ public class Settings {
     public static string ErrorTextHex => "#900000";
     public static float AnimationDelayBetweenWords => 0.1f;
     public static float AnimationDelayBetweenLetters => 0.02f;
-    public static int MinPasswordLength => 8;
     public static float MinScrollZ => 0.0f;
     public static float MaxScrollZ => 7.0f;
+    public static int MinPasswordLength => 8;
     public static int MaxRecallAttempts => 3;
 
 #if UNITY_EDITOR
