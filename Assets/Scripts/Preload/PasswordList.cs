@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class PasswordList : MonoBehaviour {
 
     public static HashSet<string> PasswordSet {
         get {
+            if (PasswordList.PasswordSet == null) throw new Exception("No passwords in HashSet.");
             return PasswordList.passwordSet;
         }
     }
