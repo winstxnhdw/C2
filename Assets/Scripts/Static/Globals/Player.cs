@@ -29,6 +29,8 @@ public static class Player {
 
     public static string GetPasswordAtIndex(int index) => Player.passwords[index];
 
+    public static bool HasBeenBruteforced() => PasswordList.PasswordSet.Contains(Player.GetPasswordAtIndex(Player.chosenPasswordIndex));
+
     public static string GetPasswordOrdinalIndicator(int index) {
         if (!Settings.PasswordOrdinalIndicators.TryGetValue(index, out string ordinalIndicator)) {
             throw new Exception($"No ordinal indicator found at index {index}.");
@@ -40,11 +42,6 @@ public static class Player {
     public static bool IsRecalledPasswordCorrect() {
         if (string.IsNullOrEmpty(Player.recalledPasswordAttempt)) throw new Exception("No password attempt has been set.");
         return Player.recalledPasswordAttempt == Player.GetPasswordAtIndex(Player.chosenPasswordIndex);
-    }
-
-    public static bool HasBeenBruteforced() {
-        if (PasswordList.PasswordSet == null) throw new Exception("Password list is empty.");
-        return PasswordList.PasswordSet.Contains(Player.GetPasswordAtIndex(Player.chosenPasswordIndex));
     }
 
     public static void Reset() {
