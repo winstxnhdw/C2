@@ -12,9 +12,9 @@
 [Aa]ssets/Resources/API
 [Aa]ssets/Resources/*.meta
 [Aa]ssets/Plugins/**/*.meta
-[Aa]ssets/Plugins/Third Party/LeanTween/Documentation*
-[Aa]ssets/Plugins/Third Party/LeanTween/Examples*
-[Aa]ssets/Plugins/Third Party/LeanTween/*.txt*
+[Aa]ssets/Plugins/Third Party/LeanTween/Documentation
+[Aa]ssets/Plugins/Third Party/LeanTween/Examples
+[Aa]ssets/Plugins/Third Party/LeanTween/*.txt
 [Aa]ssetsTemp/
 
 # Visual Studio cache directory
