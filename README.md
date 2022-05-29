@@ -28,7 +28,7 @@ Occasionally, Visual Studio Code may run into the following namespace issue.
 
 > The type or namespace name '\<namespace\>' could not be found \(are you missing a using directive or an assembly reference?\)\[Assembly-CSharp\]
 
-To solve this issue, simply close Unity and VSCode, and remove the `Library` directory from the project folder. Then, reopen Unity to rebuild the `Library` directory.
+To resolve this, simply close Unity and VSCode, and remove the `Library` directory from the project folder. Then, reopen Unity to rebuild the `Library` directory.
 
 ```bash
 rm -r Library

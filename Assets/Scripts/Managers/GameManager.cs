@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -26,12 +27,10 @@ public class GameManager : MonoBehaviour {
     }
 
     CanvasGroup[] canvasGroups;
+    Dictionary<GameStates, CanvasGroup> canvasGroupDictionary;
     GameStates gameState;
 
     void Awake() {
-        this.gameState = GameStates.Username;
-        this.canvasGroups = GetComponentsInChildren<CanvasGroup>(includeInactive: true);
-
         UsernameReply.onComplete += this.NextCanvas;
         PasswordReply.onComplete += this.EnablePasswordVerificationCanvas;
         PasswordVerification.onComplete += this.AfterPasswordVerification;
@@ -40,6 +39,19 @@ public class GameManager : MonoBehaviour {
         DetectedPrompt.onComplete += this.NextCanvas;
         HackingField.onComplete += this.NextCanvas;
         HackingVerification.onComplete += this.NextCanvas;
+
+        this.gameState = GameStates.Username;
+        this.canvasGroups = GetComponentsInChildren<CanvasGroup>(includeInactive: true);
+        this.canvasGroupDictionary = new Dictionary<GameStates, CanvasGroup>() {
+            { GameStates.Username, this.usernameCanvas },
+            { GameStates.Password, this.passwordCanvas },
+            { GameStates.PasswordRecall, this.passwordRecallCanvas },
+            { GameStates.PasswordRecallVerification, this.recallVerificationCanvas },
+            { GameStates.HackerDetected, this.hackerDetectedCanvas },
+            { GameStates.Hacking, this.hackingCanvas },
+            { GameStates.HackingVerification, this.hackingVerificationCanvas },
+            { GameStates.Scoring, this.scoreCanvas }
+        };
     }
 
     void Start() {
@@ -64,43 +76,8 @@ public class GameManager : MonoBehaviour {
 
     void SetActiveCanvases() {
         this.DisableAllCanvases();
-
-        switch (this.gameState) {
-            case GameStates.Username:
-                this.SetActiveCanvas(this.usernameCanvas);
-                break;
-
-            case GameStates.Password:
-                this.SetActiveCanvas(this.passwordCanvas);
-                break;
-
-            case GameStates.PasswordRecall:
-                this.SetActiveCanvas(this.passwordRecallCanvas);
-                break;
-
-            case GameStates.PasswordRecallVerification:
-                this.SetActiveCanvas(this.recallVerificationCanvas);
-                break;
-
-            case GameStates.HackerDetected:
-                this.SetActiveCanvas(this.hackerDetectedCanvas);
-                break;
-
-            case GameStates.Hacking:
-                this.SetActiveCanvas(this.hackingCanvas);
-                break;
-
-            case GameStates.HackingVerification:
-                this.SetActiveCanvas(this.hackingVerificationCanvas);
-                break;
-
-            case GameStates.Scoring:
-                this.SetActiveCanvas(this.scoreCanvas);
-                break;
-
-            default:
-                throw new Exception("Invalid game state");
-        }
+        if (!canvasGroupDictionary.TryGetValue(this.gameState, out CanvasGroup canvasGroup)) throw new Exception("Invalid game state");
+        this.SetActiveCanvas(canvasGroup);
     }
 
     void DisableAllCanvases() {
