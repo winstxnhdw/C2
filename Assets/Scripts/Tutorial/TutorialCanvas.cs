@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,16 +19,6 @@ public class TutorialCanvas : MonoBehaviour {
     [SerializeField] float logoTweenOffsetY;
     [SerializeField] float logoTweenDuration;
 
-    List<string> tutorialTexts;
-    List<GameObject> GameObjects;
-    Typewriter typewriterObject;
-    Sleep sleepObject;
-    Keyboard currentKeyboard;
-    TutorialStates animatingIndex;
-    int currentState;
-    bool animatingState;
-    bool complete;
-
     enum TutorialStates {
         Alphanumeric,
         Casing,
@@ -35,6 +26,18 @@ public class TutorialCanvas : MonoBehaviour {
         Length,
         Memory
     }
+
+    List<string> tutorialTexts;
+    List<GameObject> GameObjects;
+    Dictionary<TutorialStates, GameObject> gameObjectDict;
+    Dictionary<GameObject, string> textDict;
+    Typewriter typewriterObject;
+    Sleep sleepObject;
+    Keyboard currentKeyboard;
+    TutorialStates animatingIndex;
+    int currentState;
+    bool animatingState;
+    bool complete;
 
     void Awake() {
         this.complete = false;
@@ -55,6 +58,22 @@ public class TutorialCanvas : MonoBehaviour {
             this.MemoryContainer,
             this.SymbolsContainer,
             this.LengthContainer
+        };
+
+        this.gameObjectDict = new Dictionary<TutorialStates, GameObject>() {
+            { TutorialStates.Alphanumeric,  this.AlphanumericContainer },
+            { TutorialStates.Casing,        this.CasingContainer },
+            { TutorialStates.Symbols,       this.SymbolsContainer },
+            { TutorialStates.Length,        this.LengthContainer },
+            { TutorialStates.Memory,        this.MemoryContainer }
+        };
+
+        this.textDict = new Dictionary<GameObject, string>() {
+            { this.AlphanumericContainer,  "Your password must be alphanumeric." },
+            { this.CasingContainer,        "Your password must have upper and lower casings." },
+            { this.MemoryContainer,        "You must be able to remember your password." },
+            { this.SymbolsContainer,       "Your password must contain symbols." },
+            { this.LengthContainer,        "Your password must be at least 8 characters long." }
         };
     }
 
@@ -86,45 +105,24 @@ public class TutorialCanvas : MonoBehaviour {
     }
 
     void AnimateLogos() {
-        switch (this.animatingIndex) {
-            case TutorialStates.Alphanumeric:
-                this.textField.text = "Your password must be alphanumeric.";
-                this.TweenLogo(this.AlphanumericContainer);
-                break;
+        if (this.gameObjectDict.TryGetValue(this.animatingIndex, out GameObject currentGameObject)) {
+            this.TweenLogo(currentGameObject);
+        }
 
-            case TutorialStates.Casing:
-                this.textField.text = "Your password must have upper and lower casings.";
-                this.TweenLogo(this.CasingContainer);
-                break;
-
-            case TutorialStates.Symbols:
-                this.textField.text = "Your password must contain symbols.";
-                this.TweenLogo(this.SymbolsContainer);
-                break;
-
-            case TutorialStates.Length:
-                this.textField.text = "Your password should be at least 8 characters long.";
-                this.TweenLogo(this.LengthContainer);
-                break;
-
-            case TutorialStates.Memory:
-                this.textField.text = "You must be able to remember your password.";
-                this.TweenLogo(this.MemoryContainer);
-                break;
-
-            default:
-                this.GameObjects.ForEach(x => x.SetActive(false));
-                this.textField.text = "Ready? Press ENTER to begin!";
-                this.textField.interactable = false;
-                this.complete = true;
-                this.TweenField(-1.0f);
-                break;
+        else {
+            this.GameObjects.ForEach(x => x.SetActive(false));
+            this.textField.text = "Ready? Press ENTER to begin!";
+            this.textField.interactable = false;
+            this.complete = true;
+            this.TweenField(-1.0f);
         }
 
         this.animatingIndex++;
     }
 
     void TweenLogo(GameObject logo) {
+        if (!this.textDict.TryGetValue(logo, out string text)) throw new Exception("Logo not found in dictionary.");
+        this.textField.text = text;
         this.typewriterObject = this.AnimateWords();
         logo.SetActive(true);
         logo.LeanMoveLocalY(logo.transform.position.y + this.logoTweenOffsetY, this.logoTweenDuration).setEaseOutExpo();
