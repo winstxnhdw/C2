@@ -17,7 +17,7 @@ public class CustomCursor : MonoBehaviour {
 
         this.cursorMovement = GetComponent<CursorMovement>();
         this.currentMousePosition = Mouse.current.position;
-        this.zOffsetFromCamera = Global.MainCamera.nearClipPlane + this.zOffsetFromNearClipPlane;
+        this.zOffsetFromCamera = Global.Camera.nearClipPlane + this.zOffsetFromNearClipPlane;
         this.UpdateVirtualCursorPosition();
     }
 
@@ -25,17 +25,17 @@ public class CustomCursor : MonoBehaviour {
         Vector2 mousePosition = currentMousePosition.ReadValue();
         Vector3 realCursorPosition = new Vector3(mousePosition.x, mousePosition.y, this.zOffsetFromCamera);
         this.cursorMovement.FollowRealCursor(realCursorPosition);
-        transform.localEulerAngles = Global.MainCamera.transform.localEulerAngles;
+        transform.localEulerAngles = Global.Camera.transform.localEulerAngles;
     }
 
     void UpdateVirtualCursorPosition() {
         Vector2 mousePosition = currentMousePosition.ReadValue();
         Vector3 realCursorPosition = new Vector3(mousePosition.x, mousePosition.y, this.zOffsetFromCamera);
-        Vector3 virtualCursorPosition = Global.MainCamera.ScreenToWorldPoint(realCursorPosition);
+        Vector3 virtualCursorPosition = Global.Camera.ScreenToWorldPoint(realCursorPosition);
         transform.position = new Vector3(transform.position.x, transform.position.y, virtualCursorPosition.z);
     }
 
-    void UpdateVirtualCursorPosition(in float2 _) {
+    void UpdateVirtualCursorPosition(float2 _) {
         this.UpdateVirtualCursorPosition();
     }
 

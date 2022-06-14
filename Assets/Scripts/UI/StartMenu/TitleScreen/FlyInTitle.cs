@@ -37,7 +37,7 @@ public class FlyInTitle : MonoBehaviour {
 
     void UpdateTextSpacing() {
         float deltaCharacterSpacing = this.minCharacterSpacing - this.maxCharacterSpacing;
-        this.titleTextMesh.characterSpacing = math.clamp(this.maxCharacterSpacing + (Global.MainCamera.transform.position.z * this.spacingSensitivity * deltaCharacterSpacing / this.maxCameraDistance), this.minCharacterSpacing, this.maxCharacterSpacing);
+        this.titleTextMesh.characterSpacing = math.clamp(this.maxCharacterSpacing + (Global.Camera.transform.position.z * this.spacingSensitivity * deltaCharacterSpacing / this.maxCameraDistance), this.minCharacterSpacing, this.maxCharacterSpacing);
     }
 
     void OnDestroy() {

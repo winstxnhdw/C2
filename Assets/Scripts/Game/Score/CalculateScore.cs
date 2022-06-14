@@ -96,7 +96,7 @@ public class CalculateScore : MonoBehaviour {
         CalculateScore.setContinueHUD?.Invoke(this.completed);
     }
 
-    int CalculatePasswordScore(in string password) {
+    int CalculatePasswordScore(string password) {
         /* 
         Ensures that the password has a combination of different type of characters since common passwords tend not to have both, or have 1 or 2 of one and the rest of the password is just made of the other
         shorter passwords are easier to crack, limited to 20 so that the user can't easily score points

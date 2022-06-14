@@ -1,12 +1,12 @@
 using UnityEngine;
 
 public static class Global {
-    static Camera mainCamera;
+    static Camera camera;
 
-    public static Camera MainCamera {
+    public static Camera Camera {
         get {
-            if (!mainCamera) Global.mainCamera = Camera.main;
-            return Global.mainCamera;
+            if (!Global.camera) Global.camera = Camera.main;
+            return Global.camera;
         }
     }
 }

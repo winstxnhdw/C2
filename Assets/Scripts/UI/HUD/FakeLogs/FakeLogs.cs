@@ -52,7 +52,7 @@ public class FakeLogs : MonoBehaviour {
         this.fakeLogsText.text += ColourChanger.SetErrorTextColour("\nIncorrect password!");
     }
 
-    void SendVerificationLogs(in Dictionary<string, bool> passwordRequirements) {
+    void SendVerificationLogs(Dictionary<string, bool> passwordRequirements) {
         StartCoroutine(this.ISendVerificationLogs(passwordRequirements));
     }
 

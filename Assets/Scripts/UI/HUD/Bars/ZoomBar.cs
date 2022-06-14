@@ -10,7 +10,7 @@ public class ZoomBar : MonoBehaviour {
     }
 
     void FillCurrentBars() {
-        this.barMask.fillAmount = Global.MainCamera.transform.position.z / Settings.MaxScrollZ;
+        this.barMask.fillAmount = Global.Camera.transform.position.z / Settings.MaxScrollZ;
     }
 
     void OnDestroy() {

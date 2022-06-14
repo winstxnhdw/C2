@@ -14,8 +14,7 @@ public class PasswordVerification : MonoBehaviour {
     [SerializeField] TMP_InputField verifyField;
     [SerializeField] TextMeshProUGUI instructionsTextMesh;
 
-    public delegate void ActionIn<Dictionary>(in Dictionary<string, bool> passwordValidity);
-    public static event ActionIn<Dictionary<string, bool>> beginVerification;
+    public static event Action<Dictionary<string, bool>> beginVerification;
     public static event Action onComplete;
     public static event Action onSuccessfulValidation;
 

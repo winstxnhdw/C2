@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
         foreach (CanvasGroup canvas in this.canvasGroups) canvas.gameObject.SetActive(false);
     }
 
-    void SetActiveCanvas(in CanvasGroup canvas) {
+    void SetActiveCanvas(CanvasGroup canvas) {
         canvas.gameObject.SetActive(true);
     }
 

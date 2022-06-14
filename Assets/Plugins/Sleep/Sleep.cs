@@ -7,7 +7,7 @@ public class Sleep : MonoBehaviour {
     float timer;
     float delay;
 
-    void Initialise(in Action function, float delay) {
+    void Initialise(Action function, float delay) {
         this.function = function;
         this.delay = delay;
     }
@@ -31,12 +31,12 @@ public class Sleep : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    public Sleep SetOnComplete(in Action setOnCompleteFunction) {
+    public Sleep SetOnComplete(Action setOnCompleteFunction) {
         this.setOnCompleteFunction = setOnCompleteFunction;
         return this;
     }
 
-    public static Sleep BeforeFunction(in Action function, float delay) {
+    public static Sleep BeforeFunction(Action function, float delay) {
         Sleep sleepObject = new GameObject("~Sleep").AddComponent<Sleep>();
         sleepObject.Initialise(function, delay);
         return sleepObject;
