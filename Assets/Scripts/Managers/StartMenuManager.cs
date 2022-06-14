@@ -26,11 +26,11 @@ public class StartMenuManager : MonoBehaviour {
     }
 
     void DisableObjectWhenPassed(GameObject gameObject) {
-        gameObject.SetActive(Global.MainCamera.transform.position.z <= gameObject.transform.position.z);
+        gameObject.SetActive(Global.Camera.transform.position.z <= gameObject.transform.position.z);
     }
 
     void EnableObjectWhenNear(GameObject gameObject) {
-        gameObject.SetActive(math.abs(Global.MainCamera.transform.position.z - gameObject.transform.position.z) < enableDistance);
+        gameObject.SetActive(math.abs(Global.Camera.transform.position.z - gameObject.transform.position.z) < enableDistance);
     }
 
     void OnDestroy() {

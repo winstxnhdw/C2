@@ -14,19 +14,19 @@ public class Typewriter : MonoBehaviour {
     float timer;
     int currentIndex;
 
-    void Initialise(in TMP_InputField inputField, float delay) {
+    void Initialise(TMP_InputField inputField, float delay) {
         this.inputField = inputField;
         this.text = inputField.text;
         this.delayBetweenText = delay;
         this.timer = delay;
     }
 
-    void InitLetters(in TMP_InputField inputField, float delayBetweenLetters) {
+    void InitLetters(TMP_InputField inputField, float delayBetweenLetters) {
         this.Initialise(inputField, delayBetweenLetters);
         this.animationType = "letters";
     }
 
-    void InitWords(in TMP_InputField inputField, float delayBetweenWords) {
+    void InitWords(TMP_InputField inputField, float delayBetweenWords) {
         this.Initialise(inputField, delayBetweenWords);
         this.animationType = "words";
     }
@@ -89,24 +89,24 @@ public class Typewriter : MonoBehaviour {
         this.inputField.ActivateInputField();
     }
 
-    public Typewriter SetOnComplete(in Action setOnCompleteFunction) {
+    public Typewriter SetOnComplete(Action setOnCompleteFunction) {
         this.setOnCompleteFunction = setOnCompleteFunction;
         return this;
     }
 
-    static Typewriter Animate(in TMP_InputField inputField) {
+    static Typewriter Animate(TMP_InputField inputField) {
         if (String.IsNullOrEmpty(inputField.text)) throw new Exception("Text is empty");
         inputField.interactable = true;
         return new GameObject("~Typewriter").AddComponent<Typewriter>();
     }
 
-    public static Typewriter AnimateLetters(in TMP_InputField inputField, float delayBetweenLetters) {
+    public static Typewriter AnimateLetters(TMP_InputField inputField, float delayBetweenLetters) {
         Typewriter typewriterObject = Animate(inputField);
         typewriterObject.InitLetters(inputField, delayBetweenLetters);
         return typewriterObject;
     }
 
-    public static Typewriter AnimateWords(in TMP_InputField inputField, float delayBetweenWords) {
+    public static Typewriter AnimateWords(TMP_InputField inputField, float delayBetweenWords) {
         Typewriter typewriterObject = Animate(inputField);
         typewriterObject.InitWords(inputField, delayBetweenWords);
         return typewriterObject;

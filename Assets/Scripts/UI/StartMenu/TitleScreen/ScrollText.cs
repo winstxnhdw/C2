@@ -24,7 +24,7 @@ public class ScrollText : MonoBehaviour {
     }
 
     void UpdateSpriteAngle() {
-        transform.localEulerAngles = new Vector3(0.0f, 0.0f, -Global.MainCamera.transform.position.z * this.rotationSensitivity);
+        transform.localEulerAngles = new Vector3(0.0f, 0.0f, -Global.Camera.transform.position.z * this.rotationSensitivity);
     }
 
     void OnDestroy() {

@@ -22,7 +22,7 @@ public class HUDClipping : MonoBehaviour {
 
     void UpdateCanvasAlpha() {
         // https://www.desmos.com/calculator/odnqb9ebmt
-        float CameraNearClipPlane = Global.MainCamera.transform.position.z + Global.MainCamera.nearClipPlane;
+        float CameraNearClipPlane = Global.Camera.transform.position.z + Global.Camera.nearClipPlane;
         this.canvasGroup.alpha = maxAlpha * (CameraNearClipPlane - this.activationPositionZ + maxViewDistance) / fadeInDistance;
     }
 

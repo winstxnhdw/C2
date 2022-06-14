@@ -37,7 +37,7 @@ public class ScoreBar : MonoBehaviour {
                  .setOnUpdate((float value) => this.fillImageDelayed.fillAmount = value);
     }
 
-    void OnError(in Color errorTextColour) {
+    void OnError(Color errorTextColour) {
         SpriteRenderer endCapSprite = this.endCapObject.GetComponentInChildren<SpriteRenderer>();
 
         this.fillImage.color = ColourChanger.SetColourAlpha(errorTextColour, this.fillImage.color.a);

@@ -3,16 +3,15 @@ using UnityEngine;
 using Unity.Mathematics;
 
 public class CursorMovement : MonoBehaviour {
-    public delegate void ActionIn<float2>(in float2 value);
-    public static event ActionIn<float2> onVirtualCursorMove;
+    public static event Action<float2> onVirtualCursorMove;
 
     [SerializeField] float tweenDuration;
 
-    public void FollowRealCursor(in Vector3 realCursorPosition) {
+    public void FollowRealCursor(Vector3 realCursorPosition) {
         if (transform.position == realCursorPosition) return;
 
         LeanTween.cancel(gameObject);
-        float3 virtualCursorPosition = Global.MainCamera.ScreenToWorldPoint(realCursorPosition);
+        float3 virtualCursorPosition = Global.Camera.ScreenToWorldPoint(realCursorPosition);
         transform.LeanMoveLocalX(virtualCursorPosition.x, tweenDuration)
                  .setEaseOutExpo();
         transform.LeanMoveLocalY(virtualCursorPosition.y, tweenDuration)

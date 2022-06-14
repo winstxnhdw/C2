@@ -10,7 +10,7 @@ public class CameraPan : MonoBehaviour {
     }
 
     // Pan camera to follow object on screen
-    public void PanFollow(in float2 objectPosition) {
+    public void PanFollow(float2 objectPosition) {
         float2 translatedCursorPosition = objectPosition - this.screenToWorldCentre2D;
         transform.localEulerAngles = new Vector3(-translatedCursorPosition.y, translatedCursorPosition.x, 0.0f) * this.panSensitivity;
     }

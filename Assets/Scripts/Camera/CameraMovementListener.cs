@@ -6,7 +6,7 @@ public class CameraMovementListener : MonoBehaviour {
     float previousCameraPositionZ;
 
     void Update() {
-        float mainCameraPosZ = Global.MainCamera.transform.position.z;
+        float mainCameraPosZ = Global.Camera.transform.position.z;
         if (previousCameraPositionZ == mainCameraPosZ) return;
 
         previousCameraPositionZ = mainCameraPosZ;

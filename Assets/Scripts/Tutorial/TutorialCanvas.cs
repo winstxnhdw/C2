@@ -61,19 +61,19 @@ public class TutorialCanvas : MonoBehaviour {
         };
 
         this.gameObjectDict = new Dictionary<TutorialStates, GameObject>() {
-            { TutorialStates.Alphanumeric,  this.AlphanumericContainer },
-            { TutorialStates.Casing,        this.CasingContainer },
-            { TutorialStates.Symbols,       this.SymbolsContainer },
-            { TutorialStates.Length,        this.LengthContainer },
-            { TutorialStates.Memory,        this.MemoryContainer }
+            {TutorialStates.Alphanumeric,  this.AlphanumericContainer},
+            {TutorialStates.Casing,        this.CasingContainer},
+            {TutorialStates.Symbols,       this.SymbolsContainer},
+            {TutorialStates.Length,        this.LengthContainer},
+            {TutorialStates.Memory,        this.MemoryContainer}
         };
 
         this.textDict = new Dictionary<GameObject, string>() {
-            { this.AlphanumericContainer,  "Your password must be alphanumeric." },
-            { this.CasingContainer,        "Your password must have upper and lower casings." },
-            { this.MemoryContainer,        "You must be able to remember your password." },
-            { this.SymbolsContainer,       "Your password must contain symbols." },
-            { this.LengthContainer,        "Your password must be at least 8 characters long." }
+            {this.AlphanumericContainer,  "Your password must be alphanumeric."},
+            {this.CasingContainer,        "Your password must have upper and lower casings."},
+            {this.MemoryContainer,        "You must be able to remember your password."},
+            {this.SymbolsContainer,       "Your password must contain symbols."},
+            {this.LengthContainer,        "Your password must be at least 8 characters long."}
         };
     }
 

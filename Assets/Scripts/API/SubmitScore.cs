@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 using System.Collections;
 
 public class SubmitScore : MonoBehaviour {
-    public void Submit(in string username, int score) {
+    public void Submit(string username, int score) {
         if (string.IsNullOrEmpty(username)) throw new Exception("Please make sure ScoreCanvas is disabled.");
         StartCoroutine(ISubmit(username, score));
     }
