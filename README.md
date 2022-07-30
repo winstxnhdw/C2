@@ -31,7 +31,7 @@ $ echo https://type-your.api.com/url/here >> Assets/Resources/API/url.txt
 
 If you do not have plans to use an online database, simply create an empty file instead.
 
-> If you do this, please ensure that you have a [local database endpoint](#local-api-endpoint).
+> **Warning**: If you do this, please ensure that you have a [local database endpoint](#local-api-endpoint) to fallback on.
 
 ```bash
 touch Assets/Resources/API/url.txt
