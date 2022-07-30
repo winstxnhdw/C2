@@ -15,7 +15,7 @@
 
 ## Setup
 
-You will need to add your API URL and URI for players to submit their username and scores to the leaderboard server. `C2` searches for a regular and a local API URL. If `C2` is unable to connect or find your regular API, it will fallback onto the local API URL. To add your endpoints, you will need to create the following directory.
+You will need to add your API URL and URI for players to submit their username and scores to the leaderboard server. `C2` searches for a regular and local API URL. If `C2` is unable to access or find your regular API, it will fallback onto the local API URL. To add your endpoints, you will need to create the following directory.
 
 ```bash
 mkdir Assets/Resources/API
