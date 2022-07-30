@@ -18,7 +18,7 @@
 You will need to add your API URL and URI for players to submit their username and scores to the leaderboard server. First, create the following directory.
 
 ```bash
-mkdir C2/Assets/Resources/API
+mkdir Assets/Resources/API
 ```
 
 ### Serverless API Endpoint
@@ -26,7 +26,7 @@ mkdir C2/Assets/Resources/API
 Add a `.txt` file containing the URL to your online database.
 
 ```bash
-$ echo https://type-your.api.com/url/here >> C2/Assets/Resources/API/url.txt
+$ echo https://type-your.api.com/url/here >> Assets/Resources/API/url.txt
 ```
 
 ### Local API Endpoint
@@ -35,13 +35,13 @@ Add a `.txt` file containing the URL to your local database.
 
 
 ```bash
-$ echo https://type-your.api.com/url/here >> C2/Assets/Resources/API/url_local.txt
+$ echo https://type-your.api.com/url/here >> Assets/Resources/API/url_local.txt
 ```
 
 If you do not have plans to use a local database, simply create an empty file instead.
 
 ```bash
-touch C2/Assets/Resources/API/url_local.txt
+touch Assets/Resources/API/url_local.txt
 ```
 
 ### Server URI Endpoints
@@ -51,7 +51,7 @@ Add a `.txt` file containing the URI endpoint for your REST requests.
 > e.g. /api/somesecretkeythatyoudontwantotherstoknow/submit
 
 ```bash
-$ echo https://type-your.api.com/url/here >> C2/Assets/Resources/API/uri.txt
+$ echo https://type-your.api.com/url/here >> Assets/Resources/API/uri.txt
 ```
 
 ## Namespace Issues
