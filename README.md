@@ -29,7 +29,9 @@ Add a `.txt` file containing the URL to your online database.
 $ echo https://type-your.api.com/url/here >> Assets/Resources/API/url.txt
 ```
 
-If you do not have plans to use a local database, simply create an empty file instead.
+If you do not have plans to use an online database, simply create an empty file instead.
+
+> If you do this, please ensure that you have a [local database endpoint](#local-api-endpoint).
 
 ```bash
 touch Assets/Resources/API/url.txt
@@ -38,7 +40,6 @@ touch Assets/Resources/API/url.txt
 ### Local API Endpoint
 
 Add a `.txt` file containing the URL to your local database.
-
 
 ```bash
 $ echo https://type-your.api.com/url/here >> Assets/Resources/API/url_local.txt
