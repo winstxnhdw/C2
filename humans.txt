@@ -1,0 +1,7 @@
+Many thanks to the following civilians for their contributions:
+
+[Alyssa](https://github.com/alyssaxchua) for her contributions to the UI designs and password strength algorithm.
+
+[Ting Ying](https://github.com/LTYGUY) for his assistance with debugging and bug fixes.
+
+Would not have been able to meet the hard deadline for this project without their help :)
