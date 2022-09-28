@@ -9,8 +9,7 @@ public class PasswordList : MonoBehaviour {
     void Awake() {
         string passwordStrings = Resources.Load<TextAsset>(Settings.DictionaryFileName).text;
 
-        Thread initialisePasswordSetThread = new Thread(() => this.InitialisePasswordSet(passwordStrings));
-        initialisePasswordSetThread.Start();
+        new Thread(() => this.InitialisePasswordSet(passwordStrings)).Start();
     }
 
     void InitialisePasswordSet(string passwordStrings) {
