@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 
+// Only supports up to 2147483647 screenshots
 public class ScreenshotManager : MonoBehaviour {
     const string directoryName = "Screenshots";
     DirectoryInfo directory;
@@ -17,16 +17,11 @@ public class ScreenshotManager : MonoBehaviour {
     }
 
     void Screenshot() {
-        FileInfo[] screenshots = this.directory.GetFiles("*.png");
-        List<int> validScreenshotNames = new List<int>(screenshots.Length);
-
-        foreach (FileInfo screenshot in screenshots) {
-            string name = Path.GetFileNameWithoutExtension(screenshot.Name);
-
-            if (int.TryParse(name, out int validName)) {
-                validScreenshotNames.Add(validName);
-            }
-        }
+        ParallelQuery<int> validScreenshotNames =
+            this.directory.GetFiles("*.png")
+                          .AsParallel()
+                          .Where(screenshot => Path.GetFileNameWithoutExtension(screenshot.Name).All(char.IsDigit))
+                          .Select(screenshot => Int32.Parse(Path.GetFileNameWithoutExtension(screenshot.Name)));
 
         string screenshotName = validScreenshotNames.Any() ? $"{validScreenshotNames.Max() + 1}.png" : "1.png";
         ScreenCapture.CaptureScreenshot(Path.Combine(this.directory.FullName, screenshotName));
