@@ -3,28 +3,28 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-// Only supports up to 2147483647 screenshots
+// Only supports up to 18,446,744,073,709,551,615 screenshots
 public class ScreenshotManager : MonoBehaviour {
-    const string directoryName = "Screenshots";
-    DirectoryInfo directory;
+    const string DirectoryName = "Screenshots";
+    DirectoryInfo Directory { get; set; }
 
     void Awake() {
         InputListener.onPrintScreenPress += this.Screenshot;
 
-        string screenshotPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Application.productName, directoryName);
-        Directory.CreateDirectory(screenshotPath);
-        this.directory = new DirectoryInfo(screenshotPath);
+        string screenshotPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Application.productName, DirectoryName);
+        System.IO.Directory.CreateDirectory(screenshotPath);
+        this.Directory = new DirectoryInfo(screenshotPath);
     }
 
     void Screenshot() {
-        ParallelQuery<int> validScreenshotNames =
-            this.directory.GetFiles("*.png")
+        ParallelQuery<ulong> validScreenshotNames =
+            this.Directory.GetFiles("*.png")
                           .AsParallel()
                           .Where(screenshot => Path.GetFileNameWithoutExtension(screenshot.Name).All(char.IsDigit))
-                          .Select(screenshot => Int32.Parse(Path.GetFileNameWithoutExtension(screenshot.Name)));
+                          .Select(screenshot => ulong.Parse(Path.GetFileNameWithoutExtension(screenshot.Name)));
 
         string screenshotName = validScreenshotNames.Any() ? $"{validScreenshotNames.Max() + 1}.png" : "1.png";
-        ScreenCapture.CaptureScreenshot(Path.Combine(this.directory.FullName, screenshotName));
+        ScreenCapture.CaptureScreenshot(Path.Combine(this.Directory.FullName, screenshotName));
     }
 
     void OnDestroy() {
