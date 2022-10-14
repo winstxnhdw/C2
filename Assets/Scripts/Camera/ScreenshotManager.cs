@@ -11,7 +11,8 @@ public class ScreenshotManager : MonoBehaviour {
     void Awake() {
         InputListener.onPrintScreenPress += this.Screenshot;
 
-        string screenshotPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Application.productName, DirectoryName);
+        string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string screenshotPath = Path.Combine(documentsPath, Application.productName, DirectoryName);
         System.IO.Directory.CreateDirectory(screenshotPath);
         this.Directory = new DirectoryInfo(screenshotPath);
     }
