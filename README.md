@@ -70,7 +70,7 @@ Occasionally, Visual Studio Code may run into the following namespace issue.
 To resolve this, simply close Unity and VSCode, and remove the `Library` directory from the project folder. Then, reopen Unity to rebuild the `Library` directory.
 
 ```bash
-rm -r Library
+git clean -fdX
 ```
 
 ## Themes
